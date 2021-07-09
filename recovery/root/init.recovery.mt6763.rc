@@ -20,14 +20,16 @@ service keystore_auth /system/bin/keystore_auth
     seclabel u:r:recovery:s0
 
 service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
-    class hal
-    user system
-    group system
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
 
 service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.trustkernel
-    class early_hal
-    user system
-    group system drmrpc
+    user root
+    group root drmrpc
+    disabled
+    seclabel u:r:recovery:s0
 
 on init
     mkdir /mnt/vendor 0755 root root
